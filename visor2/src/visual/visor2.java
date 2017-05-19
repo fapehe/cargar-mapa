@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -61,6 +62,7 @@ public class visor2 extends javax.swing.JFrame {
         ColorR = new javax.swing.JTextField();
         ColorG = new javax.swing.JTextField();
         ColorB = new javax.swing.JTextField();
+        C_imagen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +80,7 @@ public class visor2 extends javax.swing.JFrame {
             .addGroup(miPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(miImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(577, Short.MAX_VALUE))
+                .addContainerGap(877, Short.MAX_VALUE))
         );
         miPanelLayout.setVerticalGroup(
             miPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +95,13 @@ public class visor2 extends javax.swing.JFrame {
 
         ColorB.setText("jTextField3");
 
+        C_imagen.setText("cargar...");
+        C_imagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                C_imagenMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,8 +113,9 @@ public class visor2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ColorR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ColorG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ColorB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                    .addComponent(ColorB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C_imagen))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,6 +128,8 @@ public class visor2 extends javax.swing.JFrame {
                         .addComponent(ColorG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ColorB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(C_imagen)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(miPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -139,6 +151,19 @@ public class visor2 extends javax.swing.JFrame {
         this.ColorB.setText(Integer.toString(miColor.getBlue()));
         
     }//GEN-LAST:event_miImagenMouseMoved
+
+    private void C_imagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C_imagenMouseClicked
+        // TODO add your handling code here:
+        JFileChooser miSelector = new JFileChooser();
+        
+        int resultado = miSelector.showOpenDialog(null);
+        
+            if(resultado == JFileChooser.APPROVE_OPTION){
+                File Archivo= miSelector.getSelectedFile();
+                
+                this.cargarImagen(Archivo);
+            }
+    }//GEN-LAST:event_C_imagenMouseClicked
 
     /**
      * @param args the command line arguments
@@ -176,6 +201,7 @@ public class visor2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton C_imagen;
     private javax.swing.JTextField ColorB;
     private javax.swing.JTextField ColorG;
     private javax.swing.JTextField ColorR;
